@@ -1,7 +1,6 @@
-package tn.esprit.gestionzoo.main;
+package main;
 
-import tn.esprit.gestionzoo.entities.Animal;
-import tn.esprit.gestionzoo.entities.Zoo;
+import entities.*;
 
 public class ZooManagement {
 
@@ -45,8 +44,31 @@ public class ZooManagement {
         System.out.println("a" + myZoo.removeAnimal(dog));
         myZoo.displayAnimals();
 
-//        System.out.println(tn.esprit.gestionzoo.entities.Zoo.comparerZoo(myZoo, notMyZoo));
+//        System.out.println(entities.Zoo.comparerZoo(myZoo, notMyZoo));
 //        System.out.println(myZoo.isZooFull());
+
+        // Instruction 21 :
+        //Terrestrial hamster = new Terrestrial();
+        //Aquatic shark = new Aquatic();
+        //Dolphin dolphin = new Dolphin();
+        //Penguin penguin = new Penguin();
+
+        // Instruction 22 :
+        Terrestrial hamster = new Terrestrial("Mammal", "Hamster", 5, true, 4);
+        Aquatic shark = new Aquatic("Fish", "Shark", 10, true, "Ocean");
+        Dolphin dolphin = new Dolphin("Mammal", "Dolphin", 8, true, "Ocean", 20.5f);
+        Penguin penguin = new Penguin("Bird", "Penguin", 3, false, "Antarctica", 50.0f);
+
+        // Instruction 23 :
+        System.out.println(hamster.toString());
+        System.out.println(shark.toString());
+        System.out.println(dolphin.toString());
+        System.out.println(penguin.toString());
+
+        // Instruction 24 :
+        shark.swim(); // Affiche "This aquatic animal is swimming."
+        dolphin.swim(); // Affiche "This dolphin is swimming."
+        penguin.swim(); // Affiche "This aquatic animal is swimming."
 
     }
 
