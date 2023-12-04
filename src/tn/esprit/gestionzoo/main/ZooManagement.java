@@ -4,7 +4,7 @@ import tn.esprit.gestionzoo.entities.*;
 
 public class ZooManagement {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidAgeException {
         Animal lion = new Animal();
         lion.setName("Simba");
         lion.setAge(8);
@@ -12,7 +12,7 @@ public class ZooManagement {
         lion.setMammal(true);
 
         Zoo myZoo = new Zoo("Wildlife Park", "Ariana");
-        Zoo notMyZoo = new Zoo("WaterPark", "Siliana");
+
 
 
         Animal dog = new Animal("Canine", "Snoopy", 2, true);
@@ -76,6 +76,22 @@ public class ZooManagement {
 
         System.out.println(myZoo.maxPenguinSwimmingDepth());
 
+        //Instruction 33
+        try {
+            Zoo notMyZoo = new Zoo("WaterPark", "Siliana");
+
+            Animal donkey = new Animal();
+            Animal elephant = new Animal();
+            Animal giraffe = new Animal();
+            Animal monkey = new Animal("Canine", "Snoopy", -2, true);
+
+            notMyZoo.addAnimal(donkey);
+            notMyZoo.addAnimal(elephant);
+            notMyZoo.addAnimal(giraffe);
+            notMyZoo.addAnimal(monkey);
+        } catch (ZooFullException | InvalidAgeException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
     }
 
 }

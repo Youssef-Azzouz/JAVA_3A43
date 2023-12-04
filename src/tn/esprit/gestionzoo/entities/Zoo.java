@@ -2,7 +2,7 @@ package tn.esprit.gestionzoo.entities;
 
 public class Zoo {
 
-    public static final int NUMBER_OF_CAGES = 25;
+    public static final int NUMBER_OF_CAGES = 3;
     private Animal[] animals;
     private Aquatic[] aquaticAnimals;
     private String name, city;
@@ -80,14 +80,21 @@ public class Zoo {
         System.out.println("Name: " + name + ", City: " + city + ", N° Cages: " + NUMBER_OF_CAGES + " N° animals: " + nbrAnimals);
     }
 
-    public boolean addAnimal(Animal animal) {
-        if (searchAnimal(animal) != -1)
-            return false;
-        if (isZooFull())
-            return false;
-        animals[nbrAnimals] = animal;
-        nbrAnimals++;
-        return true;
+    //Instruction 32
+    public void addAnimal(Animal animal) throws ZooFullException {
+        if (searchAnimal(animal) != -1) {
+            // L'animal est déjà présent dans le zoo, ne rien faire
+            return;
+        }
+
+        if (nbrAnimals < NUMBER_OF_CAGES) {
+            animals[nbrAnimals] = animal;
+            nbrAnimals++;
+            System.out.println("Animal ajouté. Nombre d'animaux dans le zoo : " + nbrAnimals);
+        } else {
+            // Le zoo est plein, lancer l'exception ZooFullException
+            throw new ZooFullException("Le zoo est plein. Impossible d'ajouter plus d'animaux.");
+        }
     }
 
     public void addAquaticAnimal(Aquatic aquatic) {
@@ -155,5 +162,8 @@ public class Zoo {
     @Override
     public String toString() {
         return "Zoo{ Name: " + name + ", City: " + city + ", N° Cages: " + NUMBER_OF_CAGES + " N° animals: " + nbrAnimals + "}";
+    }
+
+    public boolean averageSwimmingSpeed() { return true;
     }
 }
